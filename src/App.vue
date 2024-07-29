@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Pokedex from "./components/Pokedex.vue";
+import Pokedex from "./Pokedex.vue";
 </script>
 
 <template>
