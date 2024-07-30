@@ -1,23 +1,31 @@
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 import {
-    BiBugFill,
-    FaGhost,
-    GiFairyWand,
-    GiFallingRocks,
-    GiFire,
-    GiFlyingTrout,
-    GiGroundSprout,
-    GiHighGrass,
-    GiIceCube,
-    GiPoisonBottle,
-    GiPsychicWaves,
-    GiPunch,
-    GiSpikedDragonHead,
-    GiSteelClaws,
-    GiWaterDrop,
-    MdCatchingpokemon,
-    MdDarkmode,
-    MdElectricbolt,
+  BiBugFill,
+  BiSpeedometer,
+  BiStars,
+  FaGhost,
+  FaRulerCombined,
+  GiFairyWand,
+  GiFallingRocks,
+  GiFire,
+  GiFlyingTrout,
+  GiGroundSprout,
+  GiHighGrass,
+  GiIceCube,
+  GiPoisonBottle,
+  GiPsychicWaves,
+  GiPunch,
+  GiSpikedDragonHead,
+  GiSteelClaws,
+  GiWaterDrop,
+  IoChevronBackCircleSharp,
+  MdCatchingpokemon,
+  MdDarkmode,
+  MdDescription,
+  MdElectricbolt,
+  MdReportgmailerrorred,
+  IoArrowBackCircle,
+  IoArrowForwardCircleSharp 
 } from "oh-vue-icons/icons";
 import { createApp } from "vue";
 import App from "./App.vue";
@@ -42,7 +50,15 @@ addIcons(
   GiSpikedDragonHead,
   MdDarkmode,
   GiSteelClaws,
-  GiFairyWand
+  GiFairyWand,
+  IoChevronBackCircleSharp,
+  MdDescription,
+  FaRulerCombined,
+  BiSpeedometer,
+  BiStars,
+  MdReportgmailerrorred,
+  IoArrowBackCircle,
+  IoArrowForwardCircleSharp 
 );
 
 createApp(App).component("v-icon", OhVueIcon).use(router).mount("#app");

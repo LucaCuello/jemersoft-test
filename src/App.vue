@@ -11,9 +11,10 @@ import Navbar from "@/components/Navbar.vue";
 
 <style scoped>
 .page-container {
-  min-height: 100vh;
+  min-height: calc(100vh - 15px);
   width: 100%;
   max-width: 1200px;
   min-width: 300px;
+  margin: 0 15px 15px 15px;
 }
 </style>

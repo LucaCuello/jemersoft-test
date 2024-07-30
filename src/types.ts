@@ -3,6 +3,42 @@ export interface PokemonResult {
   url: string;
 }
 
+export interface PokemonMove {
+  move: {
+    name: string;
+    url: string;
+  };
+  version_group_details: Array<{
+    level_learned_at: number;
+    move_learn_method: {
+      name: string;
+      url: string;
+    };
+    version_group: {
+      name: string;
+      url: string;
+    };
+  }>;
+}
+
+export interface PokemonStat {
+  base_stat: number;
+  effort: number;
+  stat: {
+    name: string;
+    url: string;
+  };
+}
+
+export interface PokemonAbility {
+  ability: {
+    name: string;
+    url: string;
+  };
+  is_hidden: boolean;
+  slot: number;
+}
+
 export interface Pokemon {
   id: number;
   name: string;
@@ -13,6 +49,7 @@ export interface Pokemon {
     };
   }>;
   weight: number;
+  height: number;
   sprites: {
     other: {
       "official-artwork": {
@@ -21,6 +58,29 @@ export interface Pokemon {
       };
     };
   };
+  moves: PokemonMove[];
+  stats: PokemonStat[];
+  abilities: PokemonAbility[];
+}
+
+export interface PokemonDetail {
+  sprites: {
+    front_default: string;
+  };
+}
+
+export interface PokemonSpecies {
+  flavor_text_entries: Array<{
+    flavor_text: string;
+    language: {
+      name: string;
+      url: string;
+    };
+    version: {
+      name: string;
+      url: string;
+    };
+  }>;
 }
 
 export interface PokemonType {
