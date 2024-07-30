@@ -17,24 +17,25 @@
       draggable="false"
     />
     <div class="poke-info">
-      <h2>{{ capitalizeFirstLetter(pokemon.name) }}</h2> 
+      <h2>{{ capitalizeFirstLetter(pokemon.name) }}</h2>
       <div class="poke-types">
         <div
           v-for="type in pokemon.types"
           :key="type.type.name"
           class="poke-type"
         >
+          <v-icon :name="getTypeIcon(type.type.name)" />
           {{ capitalizeFirstLetter(type.type.name) }}
         </div>
       </div>
-      <p>{{ pokemon.weight }}kg</p>
+      <p>{{ pokemon.weight }}KG</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Pokemon } from "../types";
-import typeColors from "@/colors";
+import pokeTypes from "@/colors";
 import { capitalizeFirstLetter } from "@/utils";
 
 const props = defineProps<{
@@ -50,7 +51,11 @@ interface PokemonType {
 
 const getBackgroundColor = (types: PokemonType[]): string => {
   const primaryType = types[0].type.name;
-  return typeColors[primaryType] || "#fff";
+  return pokeTypes[primaryType]?.color || "#fff";
+};
+
+const getTypeIcon = (typeName: string): string => {
+  return pokeTypes[typeName]?.icon || "";
 };
 </script>
 
