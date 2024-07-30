@@ -23,7 +23,9 @@ import {
   MdDarkmode,
   MdDescription,
   MdElectricbolt,
-  MdReportgmailerrorred
+  MdReportgmailerrorred,
+  IoArrowBackCircle,
+  IoArrowForwardCircleSharp 
 } from "oh-vue-icons/icons";
 import { createApp } from "vue";
 import App from "./App.vue";
@@ -54,7 +56,9 @@ addIcons(
   FaRulerCombined,
   BiSpeedometer,
   BiStars,
-  MdReportgmailerrorred 
+  MdReportgmailerrorred,
+  IoArrowBackCircle,
+  IoArrowForwardCircleSharp 
 );
 
 createApp(App).component("v-icon", OhVueIcon).use(router).mount("#app");
