@@ -22,3 +22,14 @@ export interface Pokemon {
     };
   };
 }
+
+export interface PokemonType {
+  slot: number;
+  type: {
+    name: string;
+  };
+}
+export interface PokeType {
+  color: string;
+  icon: string;
+}

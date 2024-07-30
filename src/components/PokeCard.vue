@@ -34,20 +34,13 @@
 </template>
 
 <script setup lang="ts">
-import { Pokemon } from "../types";
+import { Pokemon, PokemonType } from "../types";
 import pokeTypes from "@/utils/colors";
 import { capitalizeFirstLetter } from "@/utils/utils";
 
 const props = defineProps<{
   pokemon: Pokemon;
 }>();
-
-interface PokemonType {
-  slot: number;
-  type: {
-    name: string;
-  };
-}
 
 const getBackgroundColor = (types: PokemonType[]): string => {
   const primaryType = types[0].type.name;

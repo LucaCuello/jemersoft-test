@@ -1,7 +1,4 @@
-interface PokeType {
-  color: string;
-  icon: string;
-}
+import { PokeType } from "@/types";
 
 const pokeTypes: { [key: string]: PokeType } = {
   normal: { color: "#c3c7bf", icon: "md-catchingpokemon" },
