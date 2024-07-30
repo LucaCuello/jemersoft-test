@@ -34,22 +34,15 @@
 </template>
 
 <script setup lang="ts">
-import { Pokemon, PokemonType } from "../types";
-import pokeTypes from "@/utils/colors";
+import { Pokemon } from "../types";
 import { capitalizeFirstLetter } from "@/utils/utils";
+import { usePokemonUtils } from "@/composables/usePokemonUtils";
+
+const { getBackgroundColor, getTypeIcon } = usePokemonUtils();
 
 const props = defineProps<{
   pokemon: Pokemon;
 }>();
-
-const getBackgroundColor = (types: PokemonType[]): string => {
-  const primaryType = types[0].type.name;
-  return pokeTypes[primaryType]?.color || "#fff";
-};
-
-const getTypeIcon = (typeName: string): string => {
-  return pokeTypes[typeName]?.icon || "";
-};
 </script>
 
 <style scoped>

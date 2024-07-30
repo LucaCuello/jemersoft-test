@@ -23,6 +23,12 @@ export interface Pokemon {
   };
 }
 
+export interface PokemonDetail {
+  sprites: {
+    front_default: string;
+  }
+}
+
 export interface PokemonType {
   slot: number;
   type: {
