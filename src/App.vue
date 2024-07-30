@@ -15,5 +15,6 @@ import Navbar from "@/components/Navbar.vue";
   width: 100%;
   max-width: 1200px;
   min-width: 300px;
+  margin: 0 15px 15px 15px;
 }
 </style>

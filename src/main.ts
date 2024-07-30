@@ -18,6 +18,11 @@ import {
     MdCatchingpokemon,
     MdDarkmode,
     MdElectricbolt,
+    IoChevronBackCircleSharp,
+    MdDescription,
+    FaRulerCombined,
+    BiSpeedometer,
+    BiStars
 } from "oh-vue-icons/icons";
 import { createApp } from "vue";
 import App from "./App.vue";
@@ -42,7 +47,12 @@ addIcons(
   GiSpikedDragonHead,
   MdDarkmode,
   GiSteelClaws,
-  GiFairyWand
+  GiFairyWand,
+  IoChevronBackCircleSharp,
+  MdDescription,
+  FaRulerCombined,
+  BiSpeedometer,
+  BiStars
 );
 
 createApp(App).component("v-icon", OhVueIcon).use(router).mount("#app");

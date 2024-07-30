@@ -20,6 +20,7 @@ nav {
   color: var(--text-color);
   font-size: 32px;
   font-weight: 700;
+  width: max-content;
   transition: all 150ms ease-in-out;
 }
 
@@ -33,7 +34,6 @@ nav {
 }
 
 .logo:hover svg {
-  color: #f15050;
   transition: all 150ms ease-in-out;
 }
 </style>

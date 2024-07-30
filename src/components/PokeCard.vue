@@ -1,5 +1,6 @@
 <template>
-  <div
+  <router-link
+    :to="`/pokemon/${pokemon.id}`"
     class="poke-card"
     :style="{ backgroundColor: getBackgroundColor(pokemon.types) }"
   >
@@ -30,7 +31,7 @@
       </div>
       <p>{{ pokemon.weight }}KG</p>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script setup lang="ts">
@@ -91,17 +92,6 @@ const props = defineProps<{
   color: var(--text-color);
 }
 
-.poke-type {
-  background-color: var(--background);
-  padding: 0px 10px;
-  border-radius: 5px;
-}
-
-.poke-types {
-  display: flex;
-  gap: 5px;
-}
-
 .poke-card:hover {
   transform: scale(1.04);
   transition: all 200ms ease-in-out;
@@ -115,4 +105,3 @@ const props = defineProps<{
   display: block;
 }
 </style>
-@/utils/utils@/utils/colors
