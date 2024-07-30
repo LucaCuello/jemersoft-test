@@ -1,5 +1,10 @@
 <template>
+  <Toaster richColors />
   <span v-if="isLoading">Loading...</span>
+  <ErrorMsg
+    v-if="error"
+    message="Un error ocurrió mientras se cargaban los datos. Por favor, inténtalo de nuevo más tarde."
+  />
   <div
     v-else
     class="details-container"
@@ -84,6 +89,8 @@ import { Pokemon, PokemonSpecies, PokemonMove } from "@/types";
 import { onMounted, ref } from "vue";
 import { usePokemonUtils } from "@/composables/usePokemonUtils";
 import { capitalizeFirstLetter } from "@/utils/utils";
+import { Toaster, toast } from "vue-sonner";
+import ErrorMsg from "@/components/ErrorMsg.vue";
 import axios from "@/axios";
 
 const { getBackgroundColor, getTypeIcon } = usePokemonUtils();
@@ -94,6 +101,7 @@ const pokemon = ref({} as Pokemon);
 const description = ref("");
 const displayedMoves = ref<PokemonMove[]>([]);
 const showMoreButton = ref(false);
+const error = ref(false);
 
 const getPokemonDetails = async () => {
   isLoading.value = true;
@@ -115,6 +123,8 @@ const getPokemonDetails = async () => {
     showMoreButton.value = pokemonData.moves.length > 10;
   } catch (err) {
     console.error(err);
+    error.value = true;
+    toast.error('Algo salió mal...')
   } finally {
     isLoading.value = false;
   }
