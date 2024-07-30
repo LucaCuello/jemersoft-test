@@ -1,7 +1,19 @@
+<template>
+  <div class="page-container">
+    <Navbar />
+    <router-view />
+  </div>
+</template>
+
 <script setup lang="ts">
-import Pokedex from "./components/Pokedex.vue";
+import Navbar from "@/components/Navbar.vue";
 </script>
 
-<template>
-  <Pokedex />
-</template>
+<style scoped>
+.page-container {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 1200px;
+  min-width: 300px;
+}
+</style>
