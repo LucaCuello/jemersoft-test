@@ -35,8 +35,8 @@
 
 <script setup lang="ts">
 import { Pokemon } from "../types";
-import pokeTypes from "@/colors";
-import { capitalizeFirstLetter } from "@/utils";
+import pokeTypes from "@/utils/colors";
+import { capitalizeFirstLetter } from "@/utils/utils";
 
 const props = defineProps<{
   pokemon: Pokemon;
@@ -129,3 +129,4 @@ const getTypeIcon = (typeName: string): string => {
   display: block;
 }
 </style>
+@/utils/utils@/utils/colors

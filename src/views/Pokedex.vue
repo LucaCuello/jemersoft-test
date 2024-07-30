@@ -1,22 +1,18 @@
 <template>
-  <div class="page-container">
-    <Navbar />
-    <div class="pokecards-container">
-      <p v-if="isLoading">Loading...</p>
-      <PokeCard
-        v-else
-        v-for="pokemon in pokemons"
-        :key="pokemon?.id"
-        :pokemon="pokemon"
-      />
-    </div>
+  <div class="pokecards-container">
+    <p v-if="isLoading">Loading...</p>
+    <PokeCard
+      v-else
+      v-for="pokemon in pokemons"
+      :key="pokemon?.id"
+      :pokemon="pokemon"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { Pokemon, PokemonResult } from "@/types";
-import Navbar from "@/components/Navbar.vue";
 import PokeCard from "@/components/PokeCard.vue";
 import axios from "@/axios";
 
@@ -49,13 +45,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.page-container {
-  min-height: 100vh;
-  width: 100%;
-  max-width: 1200px;
-  min-width: 300px;
-}
-
 .pokecards-container {
   display: flex;
   flex-wrap: wrap;
