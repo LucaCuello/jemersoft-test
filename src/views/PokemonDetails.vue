@@ -1,8 +1,8 @@
 <template>
   <Toaster richColors />
-  <span v-if="isLoading">Loading...</span>
+  <PokeDetailsSkeleton v-if="isLoading" />
   <ErrorMsg
-    v-if="error"
+    v-else-if="error"
     message="Un error ocurrió mientras se cargaban los datos. Por favor, inténtalo de nuevo más tarde."
   />
   <div
@@ -91,6 +91,7 @@ import { usePokemonUtils } from "@/composables/usePokemonUtils";
 import { capitalizeFirstLetter } from "@/utils/utils";
 import { Toaster, toast } from "vue-sonner";
 import ErrorMsg from "@/components/ErrorMsg.vue";
+import PokeDetailsSkeleton from "@/components/PokeDetailsSkeleton.vue";
 import axios from "@/axios";
 
 const { getBackgroundColor, getTypeIcon } = usePokemonUtils();
@@ -124,9 +125,11 @@ const getPokemonDetails = async () => {
   } catch (err) {
     console.error(err);
     error.value = true;
-    toast.error('Algo salió mal...')
+    toast.error("Algo salió mal...");
   } finally {
-    isLoading.value = false;
+    setTimeout(() => {
+      isLoading.value = false;
+    }, 10000);
   }
 };
 

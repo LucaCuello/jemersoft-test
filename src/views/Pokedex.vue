@@ -5,7 +5,7 @@
       v-if="error"
       message="Un error ocurrió mientras se cargaban los datos. Por favor, inténtalo de nuevo más tarde."
     />
-    <p v-if="isLoading">Loading...</p>
+    <PokeCardSkeleton v-for="index in 20" :key="index" v-if="isLoading" />
     <PokeCard
       v-else
       v-for="pokemon in pokemons"
@@ -21,6 +21,7 @@ import { Toaster, toast } from "vue-sonner";
 import { Pokemon, PokemonResult } from "@/types";
 import PokeCard from "@/components/PokeCard.vue";
 import ErrorMsg from "@/components/ErrorMsg.vue";
+import PokeCardSkeleton from "@/components/PokeCardSkeleton.vue";
 import axios from "@/axios";
 
 const pokemons = ref<Pokemon[]>([]);

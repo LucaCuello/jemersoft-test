@@ -36,7 +36,8 @@ h4 {
   font-weight: 600;
 }
 
-p, ul li  {
+p,
+ul li {
   font-size: var(--p);
   font-weight: 400;
 }
@@ -71,4 +72,20 @@ ul {
 .poke-types {
   display: flex;
   gap: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
