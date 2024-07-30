@@ -1,43 +1,63 @@
 <template>
-  <div class="poke-card">
+  <div
+    class="poke-card"
+    :style="{ backgroundColor: getBackgroundColor(pokemon.types) }"
+  >
     <span class="poke-id">#{{ pokemon.id }}</span>
-    <!-- <img
-      :src="pokemon.sprites.front_default"
+    <img
+      :src="pokemon.sprites.other['official-artwork'].front_default"
       :alt="pokemon.name"
+      class="img-default"
       draggable="false"
-    /> -->
+    />
+    <img
+      :src="pokemon.sprites.other['official-artwork'].front_shiny"
+      :alt="pokemon.name"
+      class="img-shiny"
+      draggable="false"
+    />
     <div class="poke-info">
-      <h2>{{ pokemon.name }}</h2>
-      <!-- <h4>{{ pokemon.types.map((type) => type.type.name).join(", ") }}</h4> -->
+      <h2>{{ capitalizeFirstLetter(pokemon.name) }}</h2> 
+      <div class="poke-types">
+        <div
+          v-for="type in pokemon.types"
+          :key="type.type.name"
+          class="poke-type"
+        >
+          {{ capitalizeFirstLetter(type.type.name) }}
+        </div>
+      </div>
       <p>{{ pokemon.weight }}kg</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { Pokemon } from "../types";
 import typeColors from "@/colors";
+import { capitalizeFirstLetter } from "@/utils";
 
-const props = defineProps({
-  pokemon: {
-    type: Object,
-    required: true,
-  },
-});
+const props = defineProps<{
+  pokemon: Pokemon;
+}>();
 
-// const getBackgroundColor = (types) => {
-//   const primaryType = types[0].type.name;
-//   return typeColors[primaryType] || "#fff";
-// };
+interface PokemonType {
+  slot: number;
+  type: {
+    name: string;
+  };
+}
 
-onMounted(() => {
-  console.log(props.pokemon);
-});
+const getBackgroundColor = (types: PokemonType[]): string => {
+  const primaryType = types[0].type.name;
+  return typeColors[primaryType] || "#fff";
+};
 </script>
 
 <style scoped>
 .poke-card {
   position: relative;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,6 +67,7 @@ onMounted(() => {
   padding: 50px 15px;
   border-radius: 8px;
   text-align: center;
+  transition: all 200ms ease-in-out;
 }
 
 .poke-id {
@@ -64,7 +85,42 @@ onMounted(() => {
   height: auto;
 }
 
+.img-shiny {
+  display: none;
+}
+
+.poke-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
 .poke-info > * {
   color: var(--text-color);
+}
+
+.poke-type {
+  background-color: var(--background);
+  padding: 0px 10px;
+  border-radius: 5px;
+}
+
+.poke-types {
+  display: flex;
+  gap: 5px;
+}
+
+.poke-card:hover {
+  transform: scale(1.04);
+  transition: all 200ms ease-in-out;
+}
+
+.poke-card:hover .img-default {
+  display: none;
+}
+
+.poke-card:hover .img-shiny {
+  display: block;
 }
 </style>

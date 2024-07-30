@@ -15,21 +15,26 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import { Pokemon, PokemonResult } from "@/types";
 import Navbar from "@/components/Navbar.vue";
 import PokeCard from "@/components/PokeCard.vue";
 import axios from "@/axios";
 
-const pokemons = ref([]);
+const pokemons = ref<Pokemon[]>([]);
 const isLoading = ref(false);
 
 const getAllPokemons = async () => {
   isLoading.value = true;
   try {
-    const { data } = await axios.get("pokemon/?&limit=20");
-    const promises = data.results.map(async (pokemon) => {
-      const response = await axios.get(pokemon.url);
-      return response.data;
-    });
+    const { data } = await axios.get<{ results: PokemonResult[] }>(
+      "https://pokeapi.co/api/v2/pokemon?limit=20"
+    );
+    const promises = data.results.map(
+      async (pokemon: PokemonResult): Promise<Pokemon> => {
+        const response = await axios.get<Pokemon>(pokemon.url);
+        return response.data;
+      }
+    );
     pokemons.value = await Promise.all(promises);
   } catch (err) {
     console.error(err);
