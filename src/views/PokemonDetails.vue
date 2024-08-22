@@ -127,9 +127,7 @@ const getPokemonDetails = async () => {
     error.value = true;
     toast.error("Algo salió mal...");
   } finally {
-    setTimeout(() => {
       isLoading.value = false;
-    }, 10000);
   }
 };
 
